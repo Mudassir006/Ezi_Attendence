@@ -1,0 +1,30 @@
+
+{% block title %}Leave Request List{% endblock %}
+
+{% block content %}
+  <h1>Leave Request List</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Reason</th>
+        <th>Status</th>
+        <th>Student</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for leave_request in leave_request_list %}
+        <tr>
+          <td>{{ leave_request.date }}</td>
+          <td>{{ leave_request.reason }}</td>
+          <td>{{ leave_request.status }}</td>
+          <td>{{ leave_request.student }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="4">No leave requests found.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

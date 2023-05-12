@@ -1,0 +1,29 @@
+
+
+{% block title %}Attendance List{% endblock %}
+
+{% block content %}
+  <h1>Attendance List</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Student</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for attendance in attendance_list %}
+        <tr>
+          <td>{{ attendance.date }}</td>
+          <td>{{ attendance.status }}</td>
+          <td>{{ attendance.student }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="3">No attendance records found.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

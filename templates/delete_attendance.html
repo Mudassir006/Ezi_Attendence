@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
+{% block content %}
+  <h1 class="mb-4">Delete Attendance</h1>
+  <p>Are you sure you want to delete the following attendance record?</p>
+  <dl class="row">
+    <dt class="col-sm-3">Date:</dt>
+    <dd class="col-sm-9">{{ attendance.date }}</dd>
+
+    <dt class="col-sm-3">Student:</dt>
+    <dd class="col-sm-9">{{ attendance.student }}</dd>
+
+    <dt class="col-sm-3">Status:</dt>
+    <dd class="col-sm-9">{{ attendance.status }}</dd>
+  </dl>
+  <form method="post" action="{% url 'delete_attendance' pk=attendance.id %}">
+    {% csrf_token %}
+    <input type="submit" value="Delete" class="btn btn-danger">
+    <a href="{% url 'admin_home' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+{% endblock %}

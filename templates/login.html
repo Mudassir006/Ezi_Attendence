@@ -1,0 +1,66 @@
+{% load widget_tweaks %}
+
+<head>
+  <title>Login</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+css
+Copy code
+.form-group {
+  margin-bottom: 20px;
+}
+
+.text-uppercase {
+  letter-spacing: 1px;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: #fff;
+}
+
+.btn-warning:hover {
+  background-color: #ffa000;
+  border-color: #ffa000;
+  color: #fff;
+}
+
+form {
+  max-width: 500px;
+  margin: auto;
+  margin-top: 100px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+}
+  </style>
+</head>
+<body>
+  <form action="{% url 'login' %}" method="POST" novalidate>
+    {% csrf_token %}
+    <h2 class="text-uppercase text-center mb-5">Login</h2>
+    {% for field in form.visible_fields %}
+    <div class="form-group">
+      {{ field.label_tag }}
+      {% render_field field class="form-control" %}
+      {% if messages%}
+      {% for message in messages %}
+      <span style="color:red">{{ message }}</span>
+      {% endfor %}
+      {% endif %}
+    </div>
+    {% endfor %}
+    <div class="form-group">
+      <input type="submit" value="Login" class="btn btn-block btn-warning">
+    </div>
+    <p class="text-center text-muted mt-5 mb-0">Don’t have an account? <a href="{% url 'register' %} " class="fw-bold text-body"><u>Register</u></a></p>
+  </form>
+</body>
+
+
+

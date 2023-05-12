@@ -1,0 +1,18 @@
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
+{% block content %}
+<h1>Welcome to the Admin Panel</h1>
+<p>Here you can manage attendance, leave requests, and generate reports.</p>
+<div class="btn-group-vertical">
+
+  <a href="{% url 'create_report' %}" class="btn btn-primary">Generate Report</a><br>
+<a href="{% url 'view_attendance_admin' %}" class="btn btn-primary">View Attendance</a><br>
+<a href="{% url 'view_leave' %}" class="btn btn-primary">View Leave</a><br>
+
+
+
+
+</div>
+{% endblock %}

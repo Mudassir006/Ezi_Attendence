@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance Report</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Attendance Report for {{ student_name }}</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div>
+            {{ form.user.label_tag }}
+            {{ form.user }}
+        </div>
+        <div>
+            {{ form.start_date.label_tag }}
+            {{ form.start_date }}
+        </div>
+        <div>
+            {{ form.end_date.label_tag }}
+            {{ form.end_date }}
+        </div>
+        <input type="submit" value="Generate Report">
+    </form>
+    {% if attendance %}
+        <table class="table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for att in attendance %}
+                    <tr>
+                        <td>{{ att.date|date:"d-m-Y" }}</td>
+                        <td>{{ att.status }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% elif attendance is None %}
+
+        <h1>None</h1>
+
+
+    {% endif %}
+
+</body>
+</html>

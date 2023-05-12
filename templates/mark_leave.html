@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
+{% block content %}
+  <h2>Mark Leave</h2>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="start_date">Start Date</label>
+      <input type="date" class="form-control" id="start_date" name="start_date">
+    </div>
+    <div class="form-group">
+      <label for="end_date">End Date</label>
+      <input type="date" class="form-control" id="end_date" name="end_date">
+    </div>
+    <div class="form-group">
+      <label for="reason">Reason</label>
+      <textarea class="form-control" id="reason" name="reason" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}
